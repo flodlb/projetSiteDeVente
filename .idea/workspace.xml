@@ -1,10 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
+  <component name="ChangeListManager">
+    <list default="true" id="82e1e24e-bba4-4cb1-9cbf-5260ec9b0052" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/application/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/static/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/static/urls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/templates/application/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/templates/application/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/templates/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compte/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compte/templates/compte/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compte/templates/compte/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compte/templates/compte/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compte/templates/compte/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compte/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projetSiteDeVente/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/projetSiteDeVente.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projetSiteDeVente.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compte/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/compte/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetSiteDeVente/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/projetSiteDeVente/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetSiteDeVente/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/projetSiteDeVente/urls.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2fuWoyXqAnduEW9MGujzsECwNDY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/flori_4m1mv7d/OneDrive - ESEO/Alternance/2eme_annee/S8/TWA/projet_final_TWA/projetSiteDeVente",
+    "list.type.of.created.stylesheet": "CSS",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\flori_4m1mv7d\OneDrive - ESEO\Alternance\2eme_annee\S8\TWA\projet_final_TWA\projetSiteDeVente\application\templates" />
+      <recent name="C:\Users\flori_4m1mv7d\OneDrive - ESEO\Alternance\2eme_annee\S8\TWA\projet_final_TWA\projetSiteDeVente\application\templates\application" />
+      <recent name="C:\Users\flori_4m1mv7d\OneDrive - ESEO\Alternance\2eme_annee\S8\TWA\projet_final_TWA\projetSiteDeVente\compte" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\flori_4m1mv7d\OneDrive - ESEO\Alternance\2eme_annee\S8\TWA\projet_final_TWA\projetSiteDeVente\application\static" />
+      <recent name="C:\Users\flori_4m1mv7d\OneDrive - ESEO\Alternance\2eme_annee\S8\TWA\projet_final_TWA\projetSiteDeVente\compte\templates\compte" />
+      <recent name="C:\Users\flori_4m1mv7d\OneDrive - ESEO\Alternance\2eme_annee\S8\TWA\projet_final_TWA\projetSiteDeVente\compte" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="projetSiteDeVente" type="Python.DjangoServer" factoryName="Django server">
       <module name="projetSiteDeVente" />
@@ -29,5 +95,33 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="82e1e24e-bba4-4cb1-9cbf-5260ec9b0052" name="Changes" comment="" />
+      <created>1714651625457</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1714651625457</updated>
+      <workItem from="1714651627564" duration="77000" />
+      <workItem from="1716898510029" duration="2556000" />
+      <workItem from="1716901309393" duration="100000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

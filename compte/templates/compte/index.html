@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %} users {% endblock %}
+{% block content %}
+{% if accounts_list %}
+  <ul>
+  {% for account in accounts_list %}
+  <li>
+  <a href="{% url 'accounts:profile' account.id %}">{{account}}</a>
+  </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No users are available.</p>
+{% endif %}
+
+{% endblock %}
