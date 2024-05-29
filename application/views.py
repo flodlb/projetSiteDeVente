@@ -11,14 +11,10 @@ def liste_vetements(request):
     context["vetements"] = Vetement.objects.all()
     return render(request, 'application/affichage_des_vetements.html', context)
 
-# Create your views here.
-class IndexView(LoginRequiredMixin, generic.ListView):
-    login_url = 'home'
-    template_name = "application/index.html"
     
-@login_required(login_url='home')
-def list_view(request):
-    return render(request, 'application/home.html')
+@login_required(login_url='compte:login')
+def index(request):
+    return render(request, "application/index.html")
     
 @login_required(login_url='compte:login')
 def home(request):

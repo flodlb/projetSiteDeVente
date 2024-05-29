@@ -4,7 +4,7 @@
         <meta charset="utf-8"/>
         <title>{%block title %}{% endblock %}</title>
         {% load static %}
-    <link rel="stylesheet" href="{% static 'application/style.css' %}}" />
+    <link rel="stylesheet" href={% static 'application/style.css' %} />
     <link
       rel="stylesheet"
       href="{% static 'bootstrap5/css/bootstrap.min.css'%}"
@@ -13,7 +13,7 @@
 </head>
 
     <body>
-            {% block content %}
+        {% block content %} {% endblock content %}
         {%if user.is_authenticated %}
       <div>
         {{user.get_username}}
@@ -21,7 +21,7 @@
           class="rounded-circle account-img"
           src="{{ user.profile.get_image}}"
         />
-        <a href="{% url 'compte:index' %}" class="navbar-item">accounts</a>
+        <a href="{% url 'compte:index' %}" class="navbar-item">compte</a>
 
         <form action="{%url 'compte:logout'%}" id="logout" method="POST">
           {% csrf_token %}
@@ -29,7 +29,7 @@
         </form>
       </div>
       {%endif%}
-       {% endblock content %}
+      
             <footer style="position: absolute; bottom: 0; width: 100%">
                 <hr />
                 <p>ESEO - Campus Paris &copy; 2024</p>
