@@ -1,8 +1,10 @@
 {% extends "layout.html" %}
 
 {% block title %} Liste des Vêtements {% endblock %}
+{% block static %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'application/style.css' %}">
+{% endblock %}
 {% block content %}
 
     <div class="container">
@@ -10,11 +12,14 @@
         <div class="products">
             {% for vetement in vetements %}
                 <div class="product">
+                <a class= "lienVersZoom" href="viewPanier.html">
                     <img src="{% static 'assets/' %}{{ vetement.nom }}.png" alt="{{ vetement.nom }}">
                     <h2>{{vetement.nom }}</h2>
                     <p>{{ vetement.description }}</p>
                     <p class="prix">{{ vetement.prix }} €</p>
+                </a>
                 </div>
+
             {% endfor %}
         </div>
     </div>

@@ -1,16 +1,21 @@
 
 from django.shortcuts import render
-from application.models import Vetement
+from application.models import Vetement, Panier
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 
 
-def liste_vetements(request):
+def viewVetements(request):
     context = {}
     context["vetements"] = Vetement.objects.all()
-    return render(request, 'application/affichage_des_vetements.html', context)
-
+    return render(request, 'application/viewVetement.html', context)
+def viewPanier(request):
+    context = {}
+    context["panier"] = Panier.objects.all()
+    return render(request, 'application/viewPanier.html', context)
+#def viewZoom():
+#   g = 5
 
 
 # Create your views here.

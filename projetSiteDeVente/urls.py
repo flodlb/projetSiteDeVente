@@ -8,6 +8,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("admin/", admin.site.urls),
     path("compte/", include("compte.urls")),
+    path("application/", include("application.urls"))
 ]
 #Only add when we are in debug mode.
 if settings.DEBUG:
