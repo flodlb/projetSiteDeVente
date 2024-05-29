@@ -34,3 +34,4 @@ class ChoiceForm(forms.ModelForm):
             'choice_text': 'Choix:',
             'votes': 'Votes:',
         }
+        
