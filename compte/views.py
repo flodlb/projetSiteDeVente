@@ -25,7 +25,7 @@ def register(request):
                 user = User.objects.create_user(username=username, email=email, password=password1)
                 user.save()
                 messages.success(request,f'Compte ajouté avec succès!..')
-                return HttpResponseRedirect(reverse('account:login'))
+                return HttpResponseRedirect(reverse('compte:login'))
         else:
             messages.error(request,f'Mauvais mot de passe!..')
             return HttpResponseRedirect(reverse('compte:register'))
