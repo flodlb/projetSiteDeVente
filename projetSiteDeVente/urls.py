@@ -21,10 +21,9 @@ from . import settings, views
 
 
 urlpatterns = [
-    path("application/", include("application.urls")),
+    path("", views.home, name="home"),
     path("admin/", admin.site.urls),
     path("compte/", include("compte.urls")),
-    path("home", views.home, name="home"),
 ]
 #Only add when we are in debug mode.
 if settings.DEBUG:
