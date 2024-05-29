@@ -1,8 +1,8 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views import generic
+from django.shortcuts import render
+from application.models import Vetement
 
 
-# Create your views here.
-class IndexView(LoginRequiredMixin, generic.ListView):
-    login_url = 'home'
-    template_name = "application/index.html"
+def liste_vetements(request):
+    context = {}
+    context["vetements"] = Vetement.objects.all()
+    return render(request, 'application/affichage_des_vetements.html', context)
