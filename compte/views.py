@@ -50,7 +50,7 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        messages.success(request,f'deconnection en cours...')
+        messages.success(request,f'Deconnection en cours...')
         return HttpResponseRedirect(reverse('compte:login'))
 
 @login_required(login_url='home')
