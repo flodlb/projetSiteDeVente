@@ -5,12 +5,18 @@
 <link rel="stylesheet" href="{% static 'application/style.css' %}">
 {% block content %}
 
-    <h1>Liste des Vêtements</h1>
-    <ul>
-        {% for vetement in vetements %}
-            <li>{{ vetement.nom }} - {{ vetement.description }} - Quantité : {{ vetement.quantite }} - Prix : {{ vetement.prix }} €</li>
-        {% endfor %}
-    </ul>
-
+    <div class="container">
+        <h2>Liste des Vêtements</h2>
+        <div class="products">
+            {% for vetement in vetements %}
+                <div class="product">
+                    <img src="{% static 'assets/' %}{{ vetement.nom }}.png" alt="{{ vetement.nom }}">
+                    <h2>{{vetement.nom }}</h2>
+                    <p>{{ vetement.description }}</p>
+                    <p class="prix">{{ vetement.prix }} €</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

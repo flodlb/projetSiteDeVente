@@ -3,8 +3,18 @@
     <head>
         <meta charset="utf-8"/>
         <title>{%block title %}{% endblock %}</title>
-</head>
 
+</head>
+    <header class="header">
+        <div class="container">
+            <h1>Notre Collection</h1>
+            <nav>
+                <a href="#">Accueil</a>
+                <a href="#">Vêtements</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
     <body>
             {% block content %} {% endblock %}
         {%if user.is_authenticated %}
