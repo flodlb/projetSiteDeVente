@@ -3,6 +3,37 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
-    <div>Home pages goes here</div>
+  <header>
+    <h1>Page d'accueil</h1>
+  </header>
 
+  <div class="container">
+    <div class="logo">
+      <h2>logo</h2>
+    </div>
+
+    <div class="client">
+      <div class="user">
+        <svg width="24" height="24" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"></circle><path d="M12 1v2M12 21v2"></path></svg>
+      </div>
+      <div class="info">Information</div>
+      <div class="deconnexion">Déconnexion</div>
+    </div>
+  </div>
+
+  <div class="vetement">
+    <h2>Vetement</h2>
+    {% for vetement in vetements %}
+      <div class="product">
+        <img src="{{ vetement.image.url }}" alt="vetement image">
+        <div class="titre">{{ vetement.titre }}</div>
+      </div>
+    {% empty %}
+      <p>No vetements available.</p>
+    {% endfor %}
+  </div>
+
+  <footer class="footer">
+    <p>Contact histoire</p>
+  </footer>
 {% endblock %}

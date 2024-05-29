@@ -3,6 +3,13 @@
     <head>
         <meta charset="utf-8"/>
         <title>{%block title %}{% endblock %}</title>
+        {% load static %}
+    <link rel="stylesheet" href="{% static 'application/style.css' %}}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap5/css/bootstrap.min.css'%}"
+    />
+    <script src="{% static 'bootstrap5/js/bootstrap.min.js'%}"></script>
 </head>
 
     <body>
