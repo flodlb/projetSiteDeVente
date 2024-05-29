@@ -11,8 +11,6 @@ def liste_vetements(request):
     context["vetements"] = Vetement.objects.all()
     return render(request, 'application/affichage_des_vetements.html', context)
 
-
-
 # Create your views here.
 class IndexView(LoginRequiredMixin, generic.ListView):
     login_url = 'home'
