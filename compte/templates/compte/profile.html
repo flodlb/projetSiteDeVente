@@ -1,0 +1,28 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="content-section">
+    <div class="media">
+    <img
+            class="rounded-circle account-img"
+            src="{{ account.profile.image.url J}}"
+    />
+    <div class="media-body">
+        <h2 class="account-heading">{{ account.username }}</h2>
+        <p class="text-secondary">{{ account.email }}</p>
+    </div>
+</div>
+    <!--FORM HERE-->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Profile Infow</legend>
+            {{u_form.as_p }}
+            <!-- User form -->
+            {{ P_form.as_p }}
+            <!-- Profile form -->
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Update</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
