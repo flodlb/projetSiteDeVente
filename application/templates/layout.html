@@ -2,41 +2,38 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>{%block title %}{% endblock %}</title>
-
-</head>
+        <title>{% block title %} {% endblock %}</title>
+        {% block static %} {% endblock %}
+    </head>
     <header class="header">
         <div class="container">
-            <h1>Notre Collection</h1>
+            <h1>flo&amo</h1>
             <nav>
-                <a href="#">Accueil</a>
-                <a href="#">Vêtements</a>
+                <a href="{%url 'application:home' %}">Accueil</a>
+                <a href="{%url 'application:viewVetements' %}">Vêtements</a>
+                <a href="{%url 'application:viewPanier' %}">Panier</a>
                 <a href="#">Contact</a>
             </nav>
         </div>
     </header>
     <body>
-            {% block content %} {% endblock %}
-        {%if user.is_authenticated %}
-      <div>
-        {{user.get_username}}
-        <img
-          class="rounded-circle account-img"
-          src="{{ user.profile.get_image}}"
-        />
-        <a href="{% url 'compte:index' %}" class="navbar-item">accounts</a>
-
-        <form action="{%url 'compte:logout'%}" id="logout" method="POST">
-          {% csrf_token %}
-          <button type="submit">Logout</button>
-        </form>
-      </div>
-      {%endif%}
-        {% block content %} {% endblock %}
-            <footer style="position: absolute; bottom: 0; width: 100%">
-                <hr />
-                <p>ESEO - Campus Paris &copy; 2024</p>
-            </footer>
+        {%block content %} {% endblock %}
+        <footer class="footer" style="display: flex; flex-direction: column; align-items: center; position: absolute; bottom: 0; width: 100%;">
+    <hr />
+    <div class="footer-content" style="display: flex; width: 100%; align-items: center;">
+        <p style="margin: 0;">ESEO - Campus Paris &copy; 2024</p>
+        {% if user.is_authenticated %}
+        <div class="user" style="display: flex; align-items: center; margin-left: auto; margin-right: 3%;">
+            {{ user.get_username }}
+            <a href="{% url 'compte:index' %}" class="navbar-item" style="margin-right: 10%; margin-left: 10%">accounts</a>
+            <form action="{% url 'compte:logout' %}" id="logout" method="POST">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
         </div>
+        {% endif %}
+    </div>
+</footer>
+
     </body>
 </html>

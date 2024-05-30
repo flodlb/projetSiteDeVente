@@ -1,4 +1,8 @@
 {% extends "layout.html" %}
+{% block static %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'application/style.css' %}">
+{% endblock %}
 {% block title %} users {% endblock %}
 {% block content %}
 {% if accounts_list %}
