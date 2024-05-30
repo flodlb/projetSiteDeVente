@@ -5,11 +5,10 @@
         <title>{%block title %}{% endblock %}</title>
         {% load static %}
     <link rel="stylesheet" href={% static 'application/style.css' %} />
-    <link
+   {% comment %}  <link
       rel="stylesheet"
-      href="{% static 'bootstrap5/css/bootstrap.min.css'%}"
-    />
-    <script src="{% static 'bootstrap5/js/bootstrap.min.js'%}"></script>
+      href="{% static 'bootstrap5/css/bootstrap.min.css'%}"/> {% endcomment %}
+    <script src="{% static 'bootstrap5/js/bootstrap.min.js'%}"></script> 
 </head>
 
     <body>
