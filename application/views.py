@@ -5,6 +5,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 
+def viewZoom(request,pk):
+    context = {}
+    context["vetement"]=Vetement.objects.get(id=pk)
+    return render(request, 'application/viewZoom.html', context)
 
 def viewVetements(request):
     context = {}

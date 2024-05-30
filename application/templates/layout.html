@@ -18,9 +18,9 @@
     </header>
     <body>
         {%block content %} {% endblock %}
-        <footer class="footer" style="display: flex; flex-direction: column; align-items: center; position: absolute; bottom: 0; width: 100%;">
+        <footer class="footer" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
     <hr />
-    <div class="footer-content" style="display: flex; width: 100%; align-items: center;">
+    <div class="footer-content" style="display: flex; width: 100%; align-items: center; margin-bottom: 1%">
         <p style="margin: 0;">ESEO - Campus Paris &copy; 2024</p>
         {% if user.is_authenticated %}
         <div class="user" style="display: flex; align-items: center; margin-left: auto; margin-right: 3%;">

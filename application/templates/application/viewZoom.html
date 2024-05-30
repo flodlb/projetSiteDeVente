@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %} Liste des Vêtements {% endblock %}
+{% block static %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'application/style.css' %}">
+{% endblock %}
+{% block content %}
+        <h2>{{ vetement.nom }}.</h2>
+                <img src="{% static 'assets/' %}{{ vetement.nom }}.png" alt="{{ vetement.nom }}">
+                <p>{{ vetement.description }}</p>
+                <p class="prix">{{ vetement.prix }} €</p>
+{% endblock %}
