@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Vetement(models.Model):
+    id_V = models.AutoField(primary_key=True)
     nom = models.CharField(max_length=20)
     description = models.CharField(max_length=200)
     qnte = models.IntegerField(null=True)
@@ -18,9 +19,10 @@ class Panier(models.Model):
     CommandeV = models.BooleanField(False)
     id_V = models.ForeignKey(Vetement, on_delete=models.CASCADE)
     id_U = models.ForeignKey(User, on_delete=models.CASCADE)
+    qnte = models.IntegerField(null=True)
 
     def __str__(self):
-        return f"Panier {self.id} - Commande validée: {self.CommandeV}"
+        return f"Panier {self.id_P} - Commande validée: {self.CommandeV} - sur le vetement: {self.id_V.nom} evie par: {self.id_U.username} au nombre de {self.qnte}"
 
 
 class Historique(models.Model):
