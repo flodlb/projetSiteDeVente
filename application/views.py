@@ -15,6 +15,10 @@ def viewVetements(request):
     context["vetements"] = Vetement.objects.all()
     return render(request, 'application/viewVetement.html', context)
 
+    
+@login_required(login_url='compte:login')
+def index(request):
+    return render(request, "application/index.html")
 
 def viewZoom(request, pk):
     vetement = get_object_or_404(Vetement, id_V=pk)

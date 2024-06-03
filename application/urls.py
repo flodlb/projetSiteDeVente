@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-app_name = "application"
+app_name = 'application'
 
 urlpatterns = [
     path("<int:pk>/update/", views.update_view, name='update'),
