@@ -1,22 +1,27 @@
 {% extends 'layout.html' %}
+
 {% block content %}
-    <div class="login">
-        <h2>Login Page</h2>
-        <div class="row justify-content-center">
+    <!-- This template represents the login page of the website. -->
+    <header class="header">
+        <h1>Login</h1>
+        <a href="{% url 'compte:register' %}" class="create-account-btn">Créer son compte</a>
+    </header>
+    <main class="main">
+        <div class="login-container">
+            <div class="user-icon">👤</div>
             <form action="" method="POST">
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" class="form-control" required>
+                <div class="login-form">
+                    <input type="text" name="username" placeholder="username" class="login-form" required>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" class="form-control" required>
+                <div class="login-form">
+                    <input type="password" name="password" placeholder="password" class="login-form" required>
                 </div>
-                <br>
-                <input type="submit" value="Login" class="btn btn-primary">
-                <a href="{% url 'compte:register' %}" class="navbar-brand">Register</a>
+
+                <div class="login-form">
+                    <button type="submit">Se connecter</button>
+                </div>
             </form>
         </div>
-    </div>
+    </main>
 {% endblock %}
