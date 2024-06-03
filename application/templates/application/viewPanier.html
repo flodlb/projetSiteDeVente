@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}Panier{% endblock %}
+{% block static %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'application/style.css' %}">
+{% endblock %}
+{% load custom_filters %} <!-- Ajoutez cette ligne pour charger les filtres personnalisés -->
+{% block content %}
+<h2>Votre Panier</h2>
+<ul>
+    {% for item in panier_items %}
+        <img src="{% static 'assets/' %}{{ item.id_V.nom }}.png" alt="{{ item.id_V.nom }}">
+        <li>{{ item.id_V.nom }} - Quantité : {{ item.qnte }} - Prix unitaire : {{ item.id_V.prix }}€ - Total : {{ item.qnte|multiply:item.id_V.prix }}€</li>
+    {% empty %}
+        <li>Votre panier est vide.</li>
+    {% endfor %}
+</ul>
+    {% if panier_items %}
+    <form action="{% url 'application:ValidePanier' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Valider le panier">
+    </form>
+{% endif %}
+{% endblock %}

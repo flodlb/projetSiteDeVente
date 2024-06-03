@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}Historique des Commandes{% endblock %}
+{% block static %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'application/style.css' %}">
+{% endblock %}
+{% load custom_filters %}
+{% block content %}
+<h2>Historique des Commandes</h2>
+<ul>
+    {% for historique in historiques %}
+        <li>
+            Commande ID: {{ historique.id_Commande }} <br>
+            Vêtement: {{ historique.id_P.id_V.nom }} <br>
+            Quantité: {{ historique.id_P.qnte }} <br>
+            Prix unitaire: {{ historique.id_P.id_V.prix }}€ <br>
+            Total: {{ historique.id_P.qnte|multiply:historique.id_P.id_V.prix }}€ <br>
+            Date de commande: {{ historique.id_P.date_created }}
+        </li>
+    {% empty %}
+        <li>Vous n'avez aucun historique de commande.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

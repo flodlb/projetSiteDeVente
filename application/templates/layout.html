@@ -8,6 +8,18 @@
     <!-- {% comment %}  <link rel="stylesheet" href="{% static 'bootstrap5/css/bootstrap.min.css'%}"/> {% endcomment %} -->
     <script src="{% static 'bootstrap5/js/bootstrap.min.js' %}"></script>
 </head>
+<header class="header">
+        <div class="container">
+            <nav>
+                <a href="{%url 'application:home' %}">Accueil</a>
+                <a href="{%url 'application:viewVetements' %}">Vêtements</a>
+                <a href="{%url 'application:viewPanier' %}">Panier</a>
+                <a href="#">Contact</a>
+                <a href="{%url 'application:viewHistorique' %}">Historique</a>
+
+            </nav>
+        </div>
+    </header>
 <body>
     {% block content %} {% endblock content %}
     
