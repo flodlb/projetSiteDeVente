@@ -1,5 +1,7 @@
 from django.db.models.functions import datetime
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 
 from application.forms import AjouterAuPanierForm
 from application.models import Vetement, Panier, Historique
@@ -27,7 +29,6 @@ def viewZoom(request, pk):
 def addToPanier(request, pk):
     vetement = get_object_or_404(Vetement, id_V=pk)
     if request.method == 'POST':
-        print(request.method)
         form = AjouterAuPanierForm(request.POST or None)
 
         if form.is_valid():
@@ -36,17 +37,16 @@ def addToPanier(request, pk):
                 # Update the stock of the vetement
                 vetement.qnte -= qnte
                 vetement.save()
-
-            # Create or update the panier item
-            panier_item, created = Panier.objects.get_or_create(
-                id_U=request.user,
-                id_V=vetement,
-                CommandeV=False,
-                defaults={'qnte': qnte}
-            )
-            if not created:
-                panier_item.qnte += qnte
-                panier_item.save()
+                # Create or update the panier item
+                panier_item, created = Panier.objects.get_or_create(
+                    id_U=request.user,
+                    id_V=vetement,
+                    CommandeV=False,
+                    defaults={'qnte': qnte}
+                )
+                if not created:
+                    panier_item.qnte += qnte
+                    panier_item.save()
             return redirect('application:viewPanier')
         else:
             error_message = "Quantité demandée non disponible"
@@ -57,7 +57,6 @@ def addToPanier(request, pk):
             })
     else:
         form = AjouterAuPanierForm()
-
     return render(request, 'application/viewZoom.html', {
         'vetement': vetement,
         'form': form
@@ -102,3 +101,29 @@ def list_view(request):
 @login_required(login_url='compte:login')
 def home(request):
     return render(request, "application/home.html")
+
+
+
+@login_required(login_url='home')
+def update_view(request, pk):
+    context = {}
+
+    obj = get_object_or_404(Vetement, id=pk)
+
+    """form = (request.POST or None, instance=obj)
+
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse("polls:index", args=()))
+
+    context["form"] = form
+    return render(request, "polls/update.html", context)"""
+
+def delete_view(request, pk):
+    context = {}
+
+    obj = get_object_or_404(Vetement, id=pk)
+    if request.method == "POST":
+        obj.delete()
+
+        return HttpResponseRedirect(reverse("application:index", args=()))

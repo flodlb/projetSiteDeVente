@@ -4,6 +4,8 @@ from . import views
 app_name = "application"
 
 urlpatterns = [
+    path("<int:pk>/update/", views.update_view, name='update'),
+    path("<int:pk>/delete/", views.delete_view, name="delete"),
     path('historique', views.viewHistorique, name='viewHistorique'),
     path('ValidePanier', views.ValidePanier, name='ValidePanier'),
     path('addtopanier/<int:pk>/', views.addToPanier, name='addToPanier'),
