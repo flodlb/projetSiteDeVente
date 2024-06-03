@@ -7,6 +7,9 @@ from django.contrib import messages, auth
 from .forms import UserUpdateForm, ProfileUpdateForm
 
 def register(request):
+    context= {
+        'page_title': 'Register',
+    }
     if request.method == 'POST':
         username = request.POST.get('username')
         email = request.POST.get('email')
@@ -26,7 +29,7 @@ def register(request):
             messages.error(request, 'Les mots de passe ne correspondent pas!..')
             return HttpResponseRedirect(reverse('compte:register'))
     else:
-        return render(request, 'compte/register.html')
+        return render(request, 'compte/register.html',context)
 
 def login(request):
     context = {
@@ -38,10 +41,11 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            messages.success(request, 'Connexion réussie')
+            print('Connexion réussie: ',username)
             return HttpResponseRedirect(reverse('application:home'))
         else:
             messages.error(request, 'Utilisateur ou mot de passe incorrect')
+            messages.get_messages(request).used = True
             return HttpResponseRedirect(reverse('compte:login'))
     else:
         return render(request, 'compte/login.html', context)
@@ -49,7 +53,7 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        messages.success(request, 'Déconnexion réussie...')
+        print('Connexion réussie: ')
         return HttpResponseRedirect(reverse('compte:login'))
 
 @login_required(login_url='home')

@@ -14,9 +14,12 @@
             <h2>logo</h2>    
         </div>
         {% if not user.is_authenticated %}
-        <h1>{{page_title}}</h1>
+    {% if page_title == "Login" %}
         <a href="{% url 'compte:register' %}" class="create-account-btn">Créer son compte</a>
-        {% else %}
+    {% else %}
+        <h1>{{ page_title }}</h1>
+    {% endif %}
+        {% else  %}
         <div class="container">
             <nav>
                 <a href="{%url 'application:home' %}">Accueil</a>
@@ -27,6 +30,20 @@
     
             </nav>
         </div>
+        <div class="admin-panel">
+            <div class="profile-info">
+                <span>{{ user.username }}</span>
+                <div class="user-icon">👤</div>
+                
+            </div>
+            <div class="button-profile">
+                <button onclick="location.href='{% url 'compte:index' %}'" class="info">Information</button>
+                <form action="{% url 'compte:logout' %}" id="logout" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="logout">Déconnexion</button>
+                </form>
+            </div>
+        </div>
         {% endif %}
 
         </header>
@@ -34,18 +51,6 @@
 </header>
 <body>
     {% block content %} {% endblock content %}
-    
-    {% if user.is_authenticated %}
-    <div>
-        {{ user.get_username }}
-        <img class="rounded-circle account-img" src="{{ user.profile.get_image }}" />
-        <a href="{% url 'compte:index' %}" class="navbar-item">Compte</a>
-        <form action="{% url 'compte:logout' %}" id="logout" method="POST">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
-    </div>
-    {% endif %}
     
     <footer class="footer">
         <div class="footer-content">
