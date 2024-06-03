@@ -45,6 +45,8 @@ body {
 
 .login-form {
   margin-bottom: 15px;
+  border-radius: 5px;
+  border: none;
 }
 
 .login-input {
