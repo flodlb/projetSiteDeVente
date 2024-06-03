@@ -8,6 +8,7 @@ class Vetement(models.Model):
     description = models.CharField(max_length=200)
     qnte = models.IntegerField(null=True)
     prix = models.IntegerField(null=True)
+    image = models.ImageField(upload_to='vetements/', null=True, blank=True)
 
     def __str__(self):
         return self.nom

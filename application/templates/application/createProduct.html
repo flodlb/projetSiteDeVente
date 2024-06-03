@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Ajouter un Vêtement{% endblock %}
+{% block static %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'application/style.css' %}">
+{% endblock %}
+{% block content %}
+<h2>Ajouter un Vêtement</h2>
+
+<form action="{% url 'application:createProduct' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Ajouter le Vêtement">
+</form>
+{% endblock %}

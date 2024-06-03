@@ -74,7 +74,7 @@ body {
 }
 
 .footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   background-color: #CF783C;
@@ -88,12 +88,82 @@ body {
   align-items: center;
   width: 80%;
   margin: 0 auto;
-  .left {
+
+}
+.left .right{
     margin: 0;
   }
 
-  .right {
+.header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.header h1 {
+    float: left;
     margin: 0;
-  }
+}
+.header nav {
+    float: right;
+    margin-top: 10px;
+}
+.header nav a {
+    margin: 0 20px;
+}
+/*viewVetement*/
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.product {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
 
+}
+.product img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+.product h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.product p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+.product .prix {
+    font-size: 16px;
+    color: #0779e4;
+    font-weight: bold;
+
+}
+
+.add-product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
+}
+
+.add-product:hover {
+    color: #007BFF;
 }

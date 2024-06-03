@@ -1,11 +1,16 @@
+from django.conf.urls.static import static
 from django.urls import path
+
+from projetSiteDeVente import settings
 from . import views
 
 app_name = 'application'
 
 urlpatterns = [
-    path("<int:pk>/update/", views.update_view, name='update'),
-    path("<int:pk>/delete/", views.delete_view, name="delete"),
+
+    path("ajouter/", views.createProduct, name='createProduct'),
+    path("<int:pk>/modifier/", views.updateProduct, name='modifierProduct'),
+    path("<int:pk>/delete/", views.deleteProduct, name="deleteProduct"),
     path('historique', views.viewHistorique, name='viewHistorique'),
     path('ValidePanier', views.ValidePanier, name='ValidePanier'),
     path('addtopanier/<int:pk>/', views.addToPanier, name='addToPanier'),
@@ -15,3 +20,6 @@ urlpatterns = [
     path("", views.list_view, name="index"),
     path("", views.home, name="home"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
