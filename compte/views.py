@@ -81,6 +81,7 @@ def profile(request, pk):
 @login_required(login_url='home')
 def index(request):
     context = {
-        "compte_liste": User.objects.all()
+        'compte_liste': User.objects.all()
     }
+    print('Compte: ', User.objects.all())
     return render(request, "compte/index.html", context)
