@@ -29,6 +29,9 @@ def register(request):
         return render(request, 'compte/register.html')
 
 def login(request):
+    context = {
+        'page_title': 'Login',
+    }
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -41,7 +44,7 @@ def login(request):
             messages.error(request, 'Utilisateur ou mot de passe incorrect')
             return HttpResponseRedirect(reverse('compte:login'))
     else:
-        return render(request, 'compte/login.html')
+        return render(request, 'compte/login.html', context)
 
 def logout(request):
     if request.method == 'POST':
