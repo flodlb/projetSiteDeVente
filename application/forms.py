@@ -1,6 +1,7 @@
 
 from django import forms
-from .models import Panier
+from .models import Panier, Vetement
+
 
 class AjouterAuPanierForm(forms.ModelForm):
     qnte = forms.IntegerField(
@@ -12,3 +13,9 @@ class AjouterAuPanierForm(forms.ModelForm):
     class Meta:
         model = Panier
         fields = ['qnte']
+
+
+class VetementForm(forms.ModelForm):
+    class Meta:
+        model = Vetement
+        fields = ['nom', 'description', 'qnte', 'prix', 'image']

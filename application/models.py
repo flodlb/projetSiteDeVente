@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -8,9 +10,17 @@ class Vetement(models.Model):
     description = models.CharField(max_length=200)
     qnte = models.IntegerField(null=True)
     prix = models.IntegerField(null=True)
+    image = models.ImageField(upload_to='vetements/', null=True, blank=True)
 
     def __str__(self):
         return self.nom
+
+    def delete(self, *args, **kwargs):
+        # Vérifier si l'objet a une image et supprimer le fichier
+        if self.image:
+            if os.path.isfile(self.image.path):
+                os.remove(self.image.path)
+        super().delete(*args, **kwargs)
 
 
 

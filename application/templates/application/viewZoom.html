@@ -7,7 +7,11 @@
 {% endblock %}
 {% block content %}
         <h2>{{ vetement.nom }}.</h2>
-        <img src="{% static 'assets/' %}{{ vetement.nom }}.png" alt="{{ vetement.nom }}">
+        {% if vetement.image %}
+            <img src="{{ vetement.image.url }}" alt="{{ vetement.nom }}">
+        {% else %}
+            <img src="{% static 'assets/no_image.jpeg' %}" alt="No image available">
+        {% endif %}
         <p>{{ vetement.description }}</p>
         <p class="prix">{{ vetement.prix }} €</p>
         <h2>Ajouter {{ vetement.nom }} au panier</h2>

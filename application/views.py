@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
-from application.forms import AjouterAuPanierForm
+from application.forms import AjouterAuPanierForm, VetementForm
 from application.models import Vetement, Panier, Historique
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -15,10 +15,11 @@ def viewVetements(request):
     context["vetements"] = Vetement.objects.all()
     return render(request, 'application/viewVetement.html', context)
 
-    
+
 @login_required(login_url='compte:login')
 def index(request):
     return render(request, "application/index.html")
+
 
 def viewZoom(request, pk):
     vetement = get_object_or_404(Vetement, id_V=pk)
@@ -85,7 +86,6 @@ def viewHistorique(request):
     return render(request, 'application/viewHistorique.html', {'historiques': historiques})
 
 
-
 def viewPanier(request):
     panier_items = Panier.objects.filter(id_U=request.user, CommandeV=False)
     return render(request, 'application/viewPanier.html', {'panier_items': panier_items})
@@ -99,35 +99,52 @@ class IndexView(LoginRequiredMixin, generic.ListView):
 
 @login_required(login_url='home')
 def list_view(request):
-    return render(request, 'application/home.html')
+    return render(request, 'application/index.html')
 
-
+@login_required(login_url='home')
 @login_required(login_url='compte:login')
 def home(request):
     return render(request, "application/home.html")
 
+@login_required(login_url='home')
+def modifierProduct(request, pk):
+    vetement = get_object_or_404(Vetement, id_V=pk)
+    form = AjouterAuPanierForm()
+    context = {
+        'vetement': vetement,
+    }
+    return render(request, 'application/updateVetement.html', context)
 
 
 @login_required(login_url='home')
-def update_view(request, pk):
-    context = {}
+def updateProduct(request, pk):
+    vetement = get_object_or_404(Vetement, pk=pk)
+    if request.method == 'POST':
+        form = VetementForm(request.POST, request.FILES, instance=vetement)
+        if form.is_valid():
+            form.save()
+            return redirect('application:viewVetements')  # Rediriger vers la liste des vêtements après modification
+    else:
+        form = VetementForm(instance=vetement)
+    return render(request, 'application/updateVetement.html', {'form': form, 'vetement': vetement})
 
-    obj = get_object_or_404(Vetement, id=pk)
 
-    """form = (request.POST or None, instance=obj)
+@login_required(login_url='home')
+def deleteProduct(request, pk):
+    vetement = get_object_or_404(Vetement, pk=pk)
+    if request.method == 'POST':
+        vetement.delete()
+        return redirect('application:viewVetements')  # Rediriger vers la liste des vêtements après suppression
+    return render(request, 'application/deleteVetement.html', {'vetement': vetement})
 
-    if form.is_valid():
-        form.save()
-        return HttpResponseRedirect(reverse("polls:index", args=()))
 
-    context["form"] = form
-    return render(request, "polls/update.html", context)"""
-
-def delete_view(request, pk):
-    context = {}
-
-    obj = get_object_or_404(Vetement, id=pk)
-    if request.method == "POST":
-        obj.delete()
-
-        return HttpResponseRedirect(reverse("application:index", args=()))
+@login_required(login_url='home')
+def createProduct(request):
+    if request.method == 'POST':
+        form = VetementForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('application:viewVetements')  # Rediriger vers la liste des vêtements après ajout
+    else:
+        form = VetementForm()
+    return render(request, 'application/createProduct.html', {'form': form})

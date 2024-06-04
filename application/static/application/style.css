@@ -100,16 +100,80 @@ body {
   align-items: center;
   width: 80%;
   margin: 0 auto;
-
-  .left {
-    margin: 0;
-  }
-
-  .right {
-    margin: 0;
-  }
-
 }
+.left .right{
+    margin: 0;
+  }
+
+.header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.header h1 {
+    float: left;
+    margin: 0;
+}
+.header nav {
+    float: right;
+    margin-top: 10px;
+}
+.header nav a {
+    margin: 0 20px;
+}
+/*viewVetement*/
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    background: #ffe69c;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Ensure inherited text color */
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.product h2, .product p {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.product .prix {
+    font-size: 16px;
+    color: #0779e4;
+    font-weight: bold;
+}
+
+.product:hover {
+    transform: scale(1.05); /* Scale the div slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect on hover */
+}
+
+.product:hover h2, .product:hover p {
+    color: #007BFF; /* Change text color on hover */
+}
+
 .register-container {
   width: 100%;
   text-align: left;
