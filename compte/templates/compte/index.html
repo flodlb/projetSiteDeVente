@@ -5,16 +5,14 @@
 {% endblock %}
 {% block title %} users {% endblock %}
 {% block content %}
-{% if accounts_list %}
-  <ul>
-  {% for account in accounts_list %}
+{% for user in compte_list %}
+<p>{{user.username}}</p>
   <li>
-  <a href="{% url 'compte:profile' account.id %}">{{account}}</a>
+  <a href="{% url 'compte:profile' user.id %}">{{compte}}</a>
   </li>
-  {% endfor %}
   </ul>
-{% else %}
+{% empty %}
   <p>No users are available.</p>
-{% endif %}
+  {%endfor%}
 
 {% endblock %}
