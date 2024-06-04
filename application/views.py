@@ -99,14 +99,14 @@ class IndexView(LoginRequiredMixin, generic.ListView):
 
 @login_required(login_url='home')
 def list_view(request):
-    return render(request, 'application/home.html')
+    return render(request, 'application/index.html')
 
-
+@login_required(login_url='home')
 @login_required(login_url='compte:login')
 def home(request):
     return render(request, "application/home.html")
 
-
+@login_required(login_url='home')
 def modifierProduct(request, pk):
     vetement = get_object_or_404(Vetement, id_V=pk)
     form = AjouterAuPanierForm()
@@ -129,12 +129,16 @@ def updateProduct(request, pk):
     return render(request, 'application/updateVetement.html', {'form': form, 'vetement': vetement})
 
 
+@login_required(login_url='home')
 def deleteProduct(request, pk):
     vetement = get_object_or_404(Vetement, pk=pk)
     if request.method == 'POST':
         vetement.delete()
         return redirect('application:viewVetements')  # Rediriger vers la liste des vêtements après suppression
     return render(request, 'application/deleteVetement.html', {'vetement': vetement})
+
+
+@login_required(login_url='home')
 def createProduct(request):
     if request.method == 'POST':
         form = VetementForm(request.POST, request.FILES)

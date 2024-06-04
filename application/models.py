@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -12,6 +14,13 @@ class Vetement(models.Model):
 
     def __str__(self):
         return self.nom
+
+    def delete(self, *args, **kwargs):
+        # Vérifier si l'objet a une image et supprimer le fichier
+        if self.image:
+            if os.path.isfile(self.image.path):
+                os.remove(self.image.path)
+        super().delete(*args, **kwargs)
 
 
 
