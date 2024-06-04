@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block static %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'application/style.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Supprimer le profil</h1>
+        <p>Êtes-vous sûr de vouloir supprimer votre profil, <strong>{{ user.username }}</strong> ? Cette action est irréversible.</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="login-form">Oui, supprimer</button>
+        </form>
+    <button class="login-form" onclick="location.href='{% url 'compte:profile' user.username %}'">Annuler</button>
+    </div>
+{% endblock %}

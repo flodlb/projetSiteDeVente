@@ -10,15 +10,25 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic
 
 
+@login_required(login_url='compte:login')
+def home(request):
+    return render(request, "application/home.html")
+
+
+@login_required(login_url='home')
+def list_view(request):
+    return render(request, 'application/home.html')
+
+
+class index(LoginRequiredMixin, generic.ListView):
+    login_url = 'home'
+    template_name = "application/home.html"
+
+
 def viewVetements(request):
     context = {}
     context["vetements"] = Vetement.objects.all()
     return render(request, 'application/viewVetement.html', context)
-
-
-@login_required(login_url='compte:login')
-def index(request):
-    return render(request, "application/index.html")
 
 
 def viewZoom(request, pk):
@@ -90,21 +100,6 @@ def viewPanier(request):
     panier_items = Panier.objects.filter(id_U=request.user, CommandeV=False)
     return render(request, 'application/viewPanier.html', {'panier_items': panier_items})
 
-
-# Create your views here.
-class IndexView(LoginRequiredMixin, generic.ListView):
-    login_url = 'home'
-    template_name = "application/index.html"
-
-
-@login_required(login_url='home')
-def list_view(request):
-    return render(request, 'application/index.html')
-
-@login_required(login_url='home')
-@login_required(login_url='compte:login')
-def home(request):
-    return render(request, "application/home.html")
 
 @login_required(login_url='home')
 def modifierProduct(request, pk):

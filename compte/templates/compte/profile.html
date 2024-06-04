@@ -1,32 +1,30 @@
-{% extends 'layout.html' %} {% block content %}
+{% extends 'layout.html' %}
+
 {% block static %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'application/style.css' %}">
 {% endblock %}
+
+{% block content %}
 <div class="content-section">
     <div class="media">
-    <img
-            class="rounded-circle account-img"
-            src="{{ account.profile.image.url J}}"
-    />
-    <div class="media-body">
-        <h2 class="account-heading">{{ account.username }}</h2>
-        <p class="text-secondary">{{ account.email }}</p>
+        <div class="media-body">
+            <h2 class="account-heading">{{ account.username }}</h2>
+            <p class="text-secondary">{{ account.email }}</p>
+        </div>
     </div>
-</div>
-    <!--FORM HERE-->
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Profile Infow</legend>
-            {{u_form.as_p }}
-            <!-- User form -->
-            {{ P_form.as_p }}
-            <!-- Profile form -->
+            <legend class="border-bottom mb-4">Informations du profil</legend>
+            {{ u_form.as_p }}
         </fieldset>
         <div class="form-group">
-            <button class="btn btn-outline-info" type="submit">Update</button>
+            <button class="btn btn-outline-info" type="submit">Mettre à jour</button>
         </div>
     </form>
+    <a href="{% url 'compte:deleteProfile' user.username %}">
+            <button>Supprimer</button>
+        </a>
 </div>
 {% endblock content %}

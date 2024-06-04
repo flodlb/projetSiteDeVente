@@ -36,9 +36,9 @@
 
         {% endfor %}
         {% if user.is_superuser %}
-            <div class="product add-new">
+            <div class="product">
                 <a href="{% url 'application:createProduct' %}" class="add-product">
-                    <i class="fa fa-plus"></i> Ajouter un nouveau produit
+                    <i class="fa fa-plus"></i> <h2>Ajouter un nouveau produit</h2>
                 </a>
             </div>
         {% endif %}

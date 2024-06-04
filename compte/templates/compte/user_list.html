@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block static %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'application/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content-section">
+    <h2 class="account-heading">Liste des utilisateurs</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom d'utilisateur</th>
+                <th>Email</th>
+                <th>Détails</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user2 in users %}
+                <tr>
+                    <td>{{ user2.username }}</td>
+                    <td>{{ user2.email }}</td>
+                    {% if not user2.is_superuser %}
+                        <td>
+                            <a href="{% url 'compte:deleteProfile' user.username %}">
+                                <button>Supprimer</button>
+                            </a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

@@ -1,26 +1,25 @@
 {% extends "layout.html" %}
-{% block static %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'application/style.css' %}">
-{% endblock %}
-{% block title %} Home {% endblock %}
-{% load static %}
-    <link rel="stylesheet" href={% static 'application/style.css' %} />
+
+{% block title %} Accueil {% endblock %}
 
 {% block content %}
-  <header>
-    <h1>Page d'accueil</h1>
-  </header>
+<div class="container">
+    <header>
+        <h1>Bienvenue chez flo&amo</h1>
+        <p>Nous sommes deux frères passionnés par la mode, et nous avons travaillé dur pour créer cette boutique en ligne.</p>
+        <p>Notre objectif est de vous offrir une expérience de shopping unique en proposant des vêtements de qualité à des prix abordables.</p>
+    </header>
 
-  <div class="vetement">
-    <h2>Vetement</h2>
-    {% for vetement in vetements %}
-      <div class="product">
-        <img src="{{ vetement.image.url }}" alt="vetement image">
-        <div class="titre">{{ vetement.titre }}</div>
-      </div>
-    {% empty %}
-      <p>No vetements available.</p>
-    {% endfor %}
-  </div>
+    <section class="principe">
+        <h2>Principe du site</h2>
+        <p>Notre site vous offre une large gamme de vêtements tendance pour hommes, femmes et enfants. Nous mettons l'accent sur la qualité, le style et le confort.</p>
+        <p>Que vous recherchiez des tenues décontractées, des vêtements de sport ou des pièces élégantes pour une occasion spéciale, vous trouverez tout ce dont vous avez besoin chez nous.</p>
+    </section>
+
+    <section class="cta">
+        <h2>Commencez votre shopping dès maintenant</h2>
+         <button onclick="location.href='{% url 'application:viewVetements' %}'">Découvrir nos collections</button>
+
+    </section>
+</div>
 {% endblock %}

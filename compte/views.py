@@ -1,13 +1,15 @@
-from django.shortcuts import render, get_object_or_404
+from django.contrib.messages import get_messages
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages, auth
-from .forms import UserUpdateForm, ProfileUpdateForm
+from .forms import UserUpdateForm, UserCreationForm
+
 
 def register(request):
-    context= {
+    context = {
         'page_title': 'Register',
     }
     if request.method == 'POST':
@@ -29,7 +31,8 @@ def register(request):
             messages.error(request, 'Les mots de passe ne correspondent pas!..')
             return HttpResponseRedirect(reverse('compte:register'))
     else:
-        return render(request, 'compte/register.html',context)
+        return render(request, 'compte/register.html', context)
+
 
 def login(request):
     context = {
@@ -41,7 +44,7 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            print('Connexion réussie: ',username)
+            print('Connexion réussie: ', username)
             return HttpResponseRedirect(reverse('application:home'))
         else:
             messages.error(request, 'Utilisateur ou mot de passe incorrect')
@@ -50,38 +53,65 @@ def login(request):
     else:
         return render(request, 'compte/login.html', context)
 
+
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        print('Connexion réussie: ')
+        messages = get_messages(request)
+        for msg in messages:
+            pass
+
+            del msg
         return HttpResponseRedirect(reverse('compte:login'))
 
+
 @login_required(login_url='home')
-def profile(request, pk):
-    account = get_object_or_404(User, id=pk)
+def profile(request, username):
+    account = get_object_or_404(User, username=username)
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=account)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=account.profile)
-        if u_form.is_valid() and p_form.is_valid():
+        if u_form.is_valid():
             u_form.save()
-            p_form.save()
             messages.success(request, 'Mise à jour du compte réussie!')
-            return HttpResponseRedirect(reverse('compte:index'))
+            return HttpResponseRedirect(reverse('application:home'))
     else:
         u_form = UserUpdateForm(instance=account)
-        p_form = ProfileUpdateForm(instance=account.profile)
-    
+
     context = {
         'u_form': u_form,
-        'p_form': p_form,
         'account': account
     }
     return render(request, 'compte/profile.html', context)
 
+
 @login_required(login_url='home')
 def index(request):
-    context = {
-        'compte_liste': User.objects.all()
-    }
-    print('Compte: ', User.objects.all())
-    return render(request, "compte/index.html", context)
+    return HttpResponseRedirect(reverse('application:home'))
+
+@login_required(login_url='home')
+def deleteProfile(request, username):
+    account = get_object_or_404(User, username=username)
+    if request.method == 'POST':
+        account.delete()
+        messages.success(request, 'Profil supprimé avec succès!')
+        return redirect('compte:login')
+    return render(request, 'compte/deleteProfile.html', {'account': account})
+
+
+@login_required(login_url='home')
+def deleteProfileClassique(request, username):
+    account = get_object_or_404(User, username=username)
+    if request.method == 'POST':
+        account.delete()
+        messages.success(request, 'Profil supprimé avec succès!')
+        return redirect('compte:user_list')
+    return render(request, 'compte/deleteProfile.html', {'account': account})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def user_list(request):
+    users = User.objects.all()
+    return render(request, 'compte/user_list.html', {'users': users})
+
+
+

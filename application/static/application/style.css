@@ -1,22 +1,53 @@
 
+.header {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #B26636;
+}
+
+.logo {
+    height: 100%; /* La hauteur du logo s'adapte à celle du header */
+}
+
+.logo img {
+    max-height: 100%; /* L'image sera redimensionnée pour s'adapter à la hauteur du logo */
+    height: auto;
+    width: auto; /* Maintient le ratio d'aspect de l'image */
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
+  width: 100%;
   background-color: #CF783C;
 }
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #CF783C;
+.nav a, .admin-panel a, .admin-panel button {
+    margin: 0 10px; /* Espace entre les éléments de navigation */
 }
 
+.header a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.header h1 {
+  margin: 0;
+}
 .create-account-btn {
   padding: 10px 20px;
   background-color: #007bff;
@@ -36,10 +67,9 @@ body {
   flex: 1;
   display: flex;
   justify-content: left;
-  align-items: left;
 }
 
-.login-container {
+.login-container, .register-container {
   width: 100%;
   text-align: center;
   background-color: #CF783C;
@@ -48,7 +78,6 @@ body {
   padding-right: 40%;
   border-radius: 10px;
 }
-
 
 .user-icon {
   font-size: 50px;
@@ -75,7 +104,7 @@ body {
   color: white;
   border: none;
   border-radius: 5px;
-  box-sizing: border-box ;
+  box-sizing: border-box;
   cursor: pointer;
   font-size: 16px;
   width: 100%;
@@ -86,8 +115,8 @@ body {
 }
 
 .footer {
-  position: relative;
   bottom: 0;
+  height: 8vh;
   width: 100%;
   background-color: #CF783C;
   padding: 10px 0;
@@ -101,116 +130,73 @@ body {
   width: 80%;
   margin: 0 auto;
 }
-.left .right{
-    margin: 0;
-  }
 
-.header a {
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 16px;
-}
-.header h1 {
-    float: left;
-    margin: 0;
-}
-.header nav {
-    float: right;
-    margin-top: 10px;
-}
-.header nav a {
-    margin: 0 20px;
-}
-/*viewVetement*/
 .container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-}
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.product {
-    background: #ffe69c;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer; /* Change cursor to indicate it's clickable */
-    text-decoration: none; /* Remove underline from links */
-    color: inherit; /* Ensure inherited text color */
-}
-
-.product img {
-    max-width: 100%;
-    height: auto;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 15px;
-}
-
-.product h2, .product p {
-    margin: 0;
-    padding: 10px 0;
-}
-
-.product .prix {
-    font-size: 16px;
-    color: #0779e4;
-    font-weight: bold;
-}
-
-.product:hover {
-    transform: scale(1.05); /* Scale the div slightly on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect on hover */
-}
-
-.product:hover h2, .product:hover p {
-    color: #007BFF; /* Change text color on hover */
-}
-
-.register-container {
-  width: 100%;
-  text-align: left;
-  background-color: #CF783C;
-  padding: 20px;
-  border-radius: 10px;
+  width: 80%;
   margin: auto;
   overflow: hidden;
 }
-.header a {
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 16px;
-}
-.header h1 {
-  float: left;
-  margin: 0;
-}
-.header nav {
-  float: right;
-  margin-top: 10px;
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-.header nav a {
-  margin: 0 20px;
+.product {
+  background: #ffe69c;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+.product h2, .product p {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.product .prix {
+  font-size: 16px;
+  color: #0779e4;
+  font-weight: bold;
+}
+
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product:hover h2, .product:hover p, .product:hover i {
+  color: #007BFF;
 }
 
 .profile-container {
-  position: relative;
-  top: 0;
-  right: 0;
   padding: 20px;
   display: flex;
 }
+
 .profile-info {
   order: 2;
+}
+
+.admin-panel {
+  background-color: #CF783C;
+  text-align: center;
+  border-radius: 5px;
+  color: black;
 }
 
 .admin-panel button {
@@ -230,14 +216,28 @@ body {
   background-color: #4CAF50;
   color: white;
 }
+
 .button-profile {
   display: flex;
   justify-content: space-between;
-  order:1
+  order: 1;
 }
-.admin-panel {
-  background-color: #CF783C;
-  text-align: center;
+
+button {
+  margin: 10px 30%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
   border-radius: 5px;
-  color: black;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.entre{
+  min-height: 69vh;
+  width: 100%;
 }
