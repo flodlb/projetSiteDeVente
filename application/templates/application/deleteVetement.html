@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Confirmer la suppression{% endblock %}
+{% block static %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'application/style.css' %}">
+{% endblock %}
+{% block content %}
+<h2>Confirmer la suppression de {{ vetement.nom }}</h2>
+<p>Êtes-vous sûr de vouloir supprimer ce vêtement ? Cette action est irréversible.</p>
+<form action="{% url 'application:deleteProduct' vetement.pk %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Supprimer">
+    <a href="{% url 'application:viewVetements' %}">Annuler</a>
+</form>
+{% endblock %}
