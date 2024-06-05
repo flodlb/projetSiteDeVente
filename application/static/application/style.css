@@ -237,7 +237,30 @@ button {
   justify-content: center;
 }
 
-.entre{
+.entre {
+  display: flex;
   min-height: 69vh;
   width: 100%;
+}
+
+.entre-left {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+}
+
+.entre-right {
+  width: 60%;
+  padding: 0 10%;
+  box-sizing: border-box; /* Inclure le padding dans la largeur totale */
+}
+
+.entre-center {
+  flex: 1;
+  margin-left: 20vh;
+  margin-right: 20vh;
+}
+.entre-left img {
+  min-height: ;
 }

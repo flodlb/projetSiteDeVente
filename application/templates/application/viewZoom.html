@@ -6,25 +6,30 @@
 <link rel="stylesheet" href="{% static 'application/style.css' %}">
 {% endblock %}
 {% block content %}
-        <h2>{{ vetement.nom }}.</h2>
+
+    <div class="entre-left">
         {% if vetement.image %}
             <img src="{{ vetement.image.url }}" alt="{{ vetement.nom }}">
         {% else %}
             <img src="{% static 'assets/no_image.jpeg' %}" alt="No image available">
         {% endif %}
+    </div>
+    <div class="entre-right">
+        <h2>{{ vetement.nom }}.</h2>
         <p>{{ vetement.description }}</p>
         <p class="prix">{{ vetement.prix }} €</p>
         <h2>Ajouter {{ vetement.nom }} au panier</h2>
-<form action="{% url 'application:addToPanier' vetement.id_V %}" method="post">
-    {% csrf_token %}
-    <fieldset>
-        {% if error_message %}<p><strong>{{ error_message }}</strong>
-        </p> {% endif %}
-        <p>quantité actuel: {{ vetement.qnte }}</p>
-        <br>
-        <p>quantité souhaité</p>
-        {{ form.qnte }}
-    </fieldset>
-    <input type="submit" value="ajout dans la panier">
-</form>
+        <form action="{% url 'application:addToPanier' vetement.id_V %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                {% if error_message %}<p><strong>{{ error_message }}</strong>
+                </p> {% endif %}
+                <p>quantité actuel: {{ vetement.qnte }}</p>
+                <br>
+                <p>quantité souhaité</p>
+                {{ form.qnte }}
+            </fieldset>
+            <input type="submit" value="ajout dans la panier">
+        </form>
+    </div>
 {% endblock %}
