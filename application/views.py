@@ -24,13 +24,13 @@ class index(LoginRequiredMixin, generic.ListView):
     login_url = 'home'
     template_name = "application/home.html"
 
-
+@login_required(login_url='home')
 def viewVetements(request):
     context = {}
     context["vetements"] = Vetement.objects.all()
     return render(request, 'application/viewVetement.html', context)
 
-
+@login_required(login_url='home')
 def viewZoom(request, pk):
     vetement = get_object_or_404(Vetement, id_V=pk)
     form = AjouterAuPanierForm()
@@ -40,7 +40,7 @@ def viewZoom(request, pk):
     }
     return render(request, 'application/viewZoom.html', context)
 
-
+@login_required(login_url='home')
 def addToPanier(request, pk):
     vetement = get_object_or_404(Vetement, id_V=pk)
     if request.method == 'POST':
@@ -77,7 +77,7 @@ def addToPanier(request, pk):
         'form': form
     })
 
-
+@login_required(login_url='home')
 def ValidePanier(request):
     if request.method == 'POST':
         panier_items = Panier.objects.filter(id_U=request.user, CommandeV=False)
@@ -90,12 +90,12 @@ def ValidePanier(request):
         return redirect('application:viewPanier')
     return render(request, 'application/viewPanier.html')
 
-
+@login_required(login_url='home')
 def viewHistorique(request):
     historiques = Historique.objects.filter(id_P__id_U=request.user)
     return render(request, 'application/viewHistorique.html', {'historiques': historiques})
 
-
+@login_required(login_url='home')
 def viewPanier(request):
     panier_items = Panier.objects.filter(id_U=request.user, CommandeV=False)
     return render(request, 'application/viewPanier.html', {'panier_items': panier_items})
@@ -143,3 +143,7 @@ def createProduct(request):
     else:
         form = VetementForm()
     return render(request, 'application/createProduct.html', {'form': form})
+
+@login_required(login_url='home')
+def contact(request):
+    return render(request, 'application/home.html')

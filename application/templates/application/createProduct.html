@@ -7,11 +7,14 @@
 <link rel="stylesheet" href="{% static 'application/style.css' %}">
 {% endblock %}
 {% block content %}
-<h2>Ajouter un Vêtement</h2>
+    <div class="entre-center ">
+        <h2>Ajouter un Vêtement</h2>
 
-<form action="{% url 'application:createProduct' %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Ajouter le Vêtement">
-</form>
+        <form action="{% url 'application:createProduct' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Ajouter le Vêtement">
+        </form>
+    </div>
+
 {% endblock %}

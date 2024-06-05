@@ -6,10 +6,12 @@
 <link rel="stylesheet" href="{% static 'application/style.css' %}">
 {% endblock %}
 {% block content %}
-<h2>Modifier {{ vetement.nom }}</h2>
-<form action="{% url 'application:modifierProduct' vetement.id_V %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Enregistrer les modifications">
-</form>
+    <div class="entre-center ">
+        <h2>Modifier {{ vetement.nom }}</h2>
+        <form action="{% url 'application:modifierProduct' vetement.id_V %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Enregistrer les modifications">
+        </form>
+    </div>
 {% endblock %}

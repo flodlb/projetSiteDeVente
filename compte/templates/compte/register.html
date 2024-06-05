@@ -4,8 +4,9 @@
 <link rel="stylesheet" href="{% static 'application/style.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="main-register">
-            <class = "login-container" >
+    <div class="entre-center ">
+        <div class="main-register">
+            <div class = "login-container" >
                 <form action="" method="POST">
                     {% csrf_token %}
                     <div class="login-form">
@@ -29,5 +30,6 @@
                     </div>
                 </form>
             </div>
-        </main>
+        </div>
+    </div>
 {%endblock%}

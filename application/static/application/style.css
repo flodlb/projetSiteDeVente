@@ -143,7 +143,33 @@ body {
   gap: 20px;
   padding: 20px;
 }
+.productbis {
+  background: #ffe69c;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.productbis img {
+  max-width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+.productbis h2, .productbis p {
+  margin: 0;
+  padding: 10px 0;
+}
 
+.productbis .prix {
+  font-size: 16px;
+  color: #0779e4;
+  font-weight: bold;
+}
 .product {
   background: #ffe69c;
   padding: 20px;
@@ -257,10 +283,15 @@ button {
 }
 
 .entre-center {
+  display: flex;
   flex: 1;
+  flex-direction: column; /* Aligner les éléments en colonne */
   margin-left: 20vh;
   margin-right: 20vh;
+  justify-content: center; /* Centrer verticalement */
+  align-items: center; /* Centrer horizontalement */
 }
+
 .entre-left img {
-  min-height: ;
+  min-height: 80vh;
 }
